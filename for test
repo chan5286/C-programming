@@ -1,0 +1,131 @@
+1. 명령창에서 계산기를 구현하시오. 매개변수가 모자라면 프로그램을 종료하시오.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int a, char* v[]){
+
+	int v1, v2, c;
+
+	if (a > 4)
+		exit(0);
+	
+	v1 = atoi(v[1]);
+	v2 = atoi(v[3]);
+
+	switch (v[2][0]){
+		case '*': c = v1 * v2;
+			break;
+		case '-': c = v1 - v2;
+			break;
+		case '/': c = v1 / v2;
+			break;
+		case '+': c = v1 + v2;
+			break;
+		case '%': c = v1 % v2;
+			break;
+	
+	}
+
+	printf("%d", c);
+
+
+	return 0;
+
+}
+
+2. my.txt 에 첫줄에 33 다음 줄에 22들어 있다. 이를 읽고 add() 함수를 이용하여 더하고 결과를 출력하시오. 반드시 오류에 대해 처리를 포함하시오.
+
+#include <stdio.h>
+
+int add(int a, int b){
+
+	return a + b;
+
+}
+
+int main() {
+
+	int a, b;
+
+	FILE* fp;
+	fp = fopen("my.txt", "r");
+ 
+  if(fp == NULL)
+    exit(0);
+	fscanf(fp,"%d%d", &a, &b );
+
+	fclose(fp);
+
+	printf("%d", add(a, b));
+
+	return 0;
+
+}
+
+3. 예상되는 문제를 하나 만들고, 코딩을 하시오
+
+ex) Apple, Banana, Kiwi, Pineapple의 첫글자를 키보드로 입력받아 각각의 과일을 화면에 출력하시오.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+	char fruit;
+
+	printf("Enter the first character:\n");
+
+	scanf("%c", &fruit);
+
+	if (fruit == 'A')
+		fruit = 'a';
+	else if (fruit == 'B')
+		fruit = 'b';
+	else if (fruit == 'K')
+		fruit = 'k';
+	else if (fruit == 'P')
+		fruit = 'p';
+
+	switch (fruit){
+	
+	case 'a' : printf("Apple");
+		break;
+	case 'b' : printf("Banana");
+		break;
+	case 'k' : printf("Kiwi");
+		break;
+	case 'p' : printf("Pineapple");
+		break;
+	default : exit(0);
+	
+	}
+
+
+	return 0;
+}
+
+4. 두명의 구조체 정보를 배열에 초기화하고 포인터로 화면에 출력하시오.
+
+#include<stdio.h>
+
+struct user {
+	int a;
+	char n[80];
+
+} we[2] = { { 20,"Park" },{ 22,"Kim" } };
+
+int main() {
+
+	struct user* p;
+
+	p = we;
+  
+	printf("%d %s\n", p->a, p->n);
+	
+  p++;
+
+  printf("%d %s\n", p->a, p->n);
+
+  return 0;
+}
