@@ -1,0 +1,119 @@
+1. C언어의 특징과 장점을 적으시오
+  C언어는 시스템 프로그래밍 언어이며, 고등언어와 하위언어 모두에 쓰일 수 있다.
+
+2. C언어의 활용에 대해 적으시오.
+  C언어는 unix와 같은 시스템 구동 프로그램에 쓰일 수 있다.
+
+3. 두 실수를 메모리에 초기화 더하고 화면에 출력하시오.
+  #include <stdio.h>
+  
+  void main(){
+  float a = 2.75, b = 3.44,c;
+  c = a + b;
+  printf("%f",c);
+  }
+  
+4. 두 실수를 키보드로 받고 더해서 화면ㅇ에 출력하시오.
+  #include <stdio.h>
+  
+  void main(){
+  float a, b,c;
+  scanf("%f%f", &a, &b);
+  c = a + b;
+  printf("%f",c);
+  }
+  
+5. 두 실수를 메모리에 저장하고 함수 add()를 활용하여 더한 결과를 리턴 받아 화면에 출력하시오.
+  #include <stdio.h>
+  
+  int add(int a, int b){
+  return a + b;
+  }
+  
+  void main(){
+  int a = 4, int b = 7;
+  printf("%d", add(a, b));
+  }
+
+6.my.txt에 33과 22가 들어 있다. 이를 읽고 더하고 결과를 출력하시오.
+  #include <stdio.h>
+  
+  void main(){
+  FILE* fp;
+  fp = fopen("my.txt", "r");
+  int a, b;
+  fscanf(fp, "%d%d", &a, &b);
+  fclose(fp);
+  
+  printf("%d", a + b);
+  }
+
+7.3개의 과일을 {"Banana","Orange","Kiwi"} 초기화 하고 화면에 출력하시오.
+#include <stdio.h>
+int main(void)
+{
+	char fr[3][20] = { "Banana", "Orange", "Kiwi"};
+	printf("%s %s %s \n", fr[0], fr[1], fr[2]);
+	return 0;
+}
+
+8.곱셈용 명령창 계산기를 구현하시오. 매개변수가 2 이하면 프로그램이 종료된다. 예) mul 10 * 2 결과) 20
+  #include <stdio.h>
+  #include <stdlib.h>
+  
+  int main(int n, char* v[]){
+  int a,b,c;
+  char o;
+  
+  if(n<4) exit(0);
+  
+  a = atoi(v[1]);
+  b = atoi(v[3]);
+  o = v[2][0];
+  
+  switch(o){
+    case '*' :  c = a * b; break;
+    default : exit(0); break;
+  }
+  printf("%d", c);
+  }
+
+9. 두 명의 {이름, 나이, 이메일}을 구조체 배열에 초기화하고 화면에 출력하시오.
+  #include <stdio.h>
+
+  struct user {
+  char n[80];
+  int a;
+  char e[80];
+  };
+
+  void main(){
+  struct user me[2] = {{"jcshim", 20, "jcshim@andong.ac.kr"}, {"jckim", 22, "jckim@andong.ac.kr"}};
+  
+  printf("%s %d %s\n",me[0].n, me[0].a, me[0].e);
+  printf("%s %d %s",me[1].n, me[1].a, me[1].e);
+  }
+
+10. 두 명의 {이름과 나이 그리고 이메일}을 구조체 배열에 초기화하고, 함수 pr()에 포인터 전달하고 화면에 출력하시오.
+  #include <stdio.h>
+
+  struct user {
+  char n[80];
+  int a;
+  char e[80];
+  };
+
+  void pr(){
+  struct user me[2] = {{"jcshim", 20, "jcshim@andong.ac.kr"}, {"jckim", 22, "jckim@andong.ac.kr"}};
+  
+  int* p;
+  p = me;
+  
+  printf("%s %d %s\n",p->n, p->a, p->e);
+  p++;
+  printf("%s %d %s",p->n, p->a, p->e);
+  }
+
+  void main(){
+   pr();
+  }
