@@ -1,0 +1,86 @@
+<test.c>
+#include <stdio.h>
+int add(int a, int b);
+int sub(int a, int b);
+int mul(int a, int b);
+int sha(int a, int b);
+int mod(int a, int b);
+float div(int a, int b);
+
+int main(){
+ int a = 5;
+ int b = 3;
+ printf("%d\n", add(a, b));
+ printf("%d\n", sub(a, b));
+ printf("%d\n", mul(a, b));
+ printf("%f\n", div((float)a, (float)b));
+ printf("%d\n", mod(a, b));
+ printf("%d\n", sha(a,b));
+}
+
+<add.c>
+int add(int a, int b){
+ return (a+b);
+}
+
+<sub.c>
+int sub(int a, int b){
+ return (a-b);
+}
+
+<mul.c>
+int mul(int a, int b){
+ return (a*b);
+}
+
+<div.c>
+float div(float a, float b){
+ return (a/b);
+}
+
+<mod.c>
+int mod(int a, int b){
+ return (a%b);
+}
+
+<sha.c>
+int sha(int a, int b){
+ return (a/b);
+}
+
+<cmd>
+------------------------------------------------------------------
+C:\anu>cl/c *.c
+x86용 Microsoft (R) C/C++ 최적화 컴파일러 버전 19.22.27905
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+add.c
+div.c
+mod.c
+mul.c
+sha.c
+sub.c
+test.c
+코드를 생성하고 있습니다...
+
+C:\anu>lib /OUT:my.lib add.obj div.obj mod.obj mul.obj sub.obj sha.obj
+Microsoft (R) Library Manager Version 14.22.27905.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+C:\anu>link test my.lib
+Microsoft (R) Incremental Linker Version 14.22.27905.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+C:\anu>test
+8
+2
+15
+1.666667
+2
+1
+----------------------------------------------------------------------
+
+소감: 이번 과제로 오늘 라이브러리 만들기를 이해할 수 있었습니다. 다음 시간에 한 번 더 복습을 하면서 확실히 외워보도록 하겠습니다.
+감사합니다.
